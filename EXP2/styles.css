@@ -1,0 +1,26 @@
+body {
+    background-color: rgb(173, 173, 171);
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    font-style: bold;
+}
+
+header {
+    color: rgb(12, 5, 112);
+    font-style: oblique;
+    font-size: x-large;
+}
+
+p {
+    color: #076407;
+    font-style: italic;
+    font-size: larger;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
