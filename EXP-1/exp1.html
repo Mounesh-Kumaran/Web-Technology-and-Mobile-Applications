@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Interactive Map With Hotspots </title>
+    </head>
+    <body>
+        <h1>
+            Interactive Map 
+        </h1>
+        <img src="C:\104\Image.png" alt="'Map" usemap="#map" >
+        <map name="map">
+            <area shape="rect" coords="194,80,347,12" alt="X1" href="https://en.wikipedia.org/wiki/Chennai_International_Airport">
+            <area shape="rect" coords="321,148,423,66" alt="X2" href="https://en.wikipedia.org/wiki/Mamallapuram">
+            <area shape="rect" coords="189,187,311,143" alt="X3" href="https://en.wikipedia.org/wiki/Auroville">
+            <area shape="rect" coords="353,281,458,240" alt="X4" href="https://en.wikipedia.org/wiki/Chennai_Port">
+            <area shape="rect" coords="230,306,315,255" alt="X5" href="https://en.wikipedia.org/wiki/Basilica_of_Our_Lady_of_Good_Health">
+            <area shape="rect" coords="174,411,222,319" alt="X6" href="https://en.wikipedia.org/wiki/Pamban_Lighthouse">
+            <area shape="rect" coords="254,440,309,376" alt="X7" href="https://en.wikipedia.org/wiki/Brihadisvara_Temple">
+            <area shape="rect" coords="93,519,144,433" alt="X8" href="https://en.wikipedia.org/wiki/Thiruvalluvar_Statue">
+        </map>
+    </body>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    background-size: 400% 400%;
+    animation: gradientAnimation 6s ease infinite;
+    color: #ecf0f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0, 204, 255, 0.8);
+    margin-bottom: 30px;
+    z-index: 10;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fadeInText 2s ease-in-out;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+img {
+    max-width: 85%;
+    border: 10px solid transparent;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 204, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.5s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(0, 204, 255, 0.9), 0 0 15px rgba(0, 255, 255, 0.8);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1.05);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+area {
+    transition: transform 0.4s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+area:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 204, 255, 0.4);
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0, 204, 255, 0.7);
+}
+
+area:hover::after {
+    content: attr(alt);
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1rem;
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: rgba(0, 204, 255, 0.6);
+    color: #fff;
+    font-weight: bold;
+    animation: glowText 1.5s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(0, 204, 255, 1);
+}
+
+@keyframes glowText {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 204, 255, 0.8), 0 0 20px rgba(0, 204, 255, 0.8), 0 0 30px rgba(0, 204, 255, 0.8);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(0, 204, 255, 1), 0 0 40px rgba(0, 204, 255, 0.9), 0 0 50px rgba(0, 204, 255, 0.7);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(0, 204, 255, 0.8), 0 0 20px rgba(0, 204, 255, 0.8), 0 0 30px rgba(0, 204, 255, 0.8);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    img {
+        max-width: 95%;
+    }
+    area:hover::after {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+    </style>
+</html>
+
