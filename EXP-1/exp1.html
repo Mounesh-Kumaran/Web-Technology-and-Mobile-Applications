@@ -26,7 +26,6 @@
     box-sizing: border-box;
     font-family: 'Arial', sans-serif;
 }
-
 body {
     background: linear-gradient(135deg, #2c3e50, #34495e);
     background-size: 400% 400%;
@@ -39,7 +38,6 @@ body {
     overflow: hidden;
     font-size: 16px;
 }
-
 h1 {
     font-size: 3rem;
     text-align: center;
@@ -66,7 +64,6 @@ h1 {
         background-position: 0 0;
     }
 }
-
 img {
     max-width: 85%;
     border: 10px solid transparent;
@@ -76,13 +73,11 @@ img {
     cursor: pointer;
     position: relative;
 }
-
 img:hover {
     transform: scale(1.05);
     box-shadow: 0 0 40px rgba(0, 204, 255, 0.9), 0 0 15px rgba(0, 255, 255, 0.8);
     animation: pulse 1.5s ease-in-out infinite;
 }
-
 @keyframes pulse {
     0% {
         transform: scale(1.05);
@@ -94,19 +89,16 @@ img:hover {
         transform: scale(1.05);
     }
 }
-
 area {
     transition: transform 0.4s ease, color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
 }
-
 area:hover {
     transform: scale(1.1);
     background-color: rgba(0, 204, 255, 0.4);
     color: #fff;
     box-shadow: 0 0 15px rgba(0, 204, 255, 0.7);
 }
-
 area:hover::after {
     content: attr(alt);
     position: absolute;
@@ -122,7 +114,6 @@ area:hover::after {
     animation: glowText 1.5s ease-in-out infinite;
     box-shadow: 0 0 15px rgba(0, 204, 255, 1);
 }
-
 @keyframes glowText {
     0% {
         text-shadow: 0 0 10px rgba(0, 204, 255, 0.8), 0 0 20px rgba(0, 204, 255, 0.8), 0 0 30px rgba(0, 204, 255, 0.8);
@@ -134,7 +125,6 @@ area:hover::after {
         text-shadow: 0 0 10px rgba(0, 204, 255, 0.8), 0 0 20px rgba(0, 204, 255, 0.8), 0 0 30px rgba(0, 204, 255, 0.8);
     }
 }
-
 @media screen and (max-width: 768px) {
     h1 {
         font-size: 2rem;
@@ -147,7 +137,6 @@ area:hover::after {
         padding: 6px 12px;
     }
 }
-
 @keyframes fadeInText {
     0% {
         opacity: 0;
@@ -158,8 +147,6 @@ area:hover::after {
         transform: translateY(0);
     }
 }
-
-
     </style>
 </html>
 
