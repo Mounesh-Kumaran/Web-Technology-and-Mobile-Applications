@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            REGISTRATION PAGE  
+        </title>
+        <script>
+            function validateform(){
+                var firstname = document.getElementById("Username");
+                if(firstname.length < 6){
+                    alert("First name should be minimum 6 characters length.");
+                    return false;
+                }
+                var lastname = document.getElementById("Last Name");
+                if(lastname.length < 10){
+                    alert("Last name should be minimum 10 characters length.");
+                    return false;
+                }
+                var password = document.getElementById("Password");
+                if(password.length < 6){
+                    alert("Password should be minimum 6 characters length.");
+                    return false;
+                }
+                var emailid = document.getElementById("Email id");
+                var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                if(!email.match(emailPattern)){
+                    alert("Please enter a valid email Id");
+                    return false;
+                }
+                var mobileno = document.getElementById("Mobile Number");
+                var mobilePattern = /^[0-9]{10}$/;
+                if(!mobileno.match(mobilePattern)){
+                    alert("Please enter a valid mobile number");
+                    return false;
+                }
+                var address = document.getElementById("Address");
+                if(address.trim()=""){
+                    alert("Please Enter the Address");
+                    return false;
+                }
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1> Fill the Form </h1>
+        </header>
+        <form onsubmit = "return validateform()">
+            <label for = "UserName"> First Name : </label><br>
+            <input type = "Text" id = "UserName" name = "First Name" minlength="6" required><br>
+            <label for = "Password"> Password: </label><br>
+            <input type = "password" id = "Password" name = "Password" minlength="6" required><br>
+            <label for = "Email id"> Email : </label><br>
+            <input type = "email" id = "Email id" name = "Email id" maxlength="20" required><br>
+            <label for = "Mobile Number"> Mobile Number : </label><br>
+            <input type = "tel" id = "Mobile Number" name = "Mobile Number" pattern = "[0-9]{10}"  required><br>
+            <label for = "Last name"> Last Name : </label><br>
+            <input type = "Text" id = "Last Name" name = "Last Name" minlength="10" required><br>
+            <label for = "Address"> Address: </label><br>
+            <textarea id = "Address" name =" address" rows = "5" ></textarea><br>
+            <div id = "Submit"> 
+            <input type = "submit" id = "Submit" name = "Submit">
+            </div>
+        </form>
+        </body>
+        <style>
+            header{
+                text-align: center;
+                font-style: italic;
+            }
+            form{
+                padding: 20px;
+                border: 5px solid black;
+                width : 180px ;
+                margin: 20px auto;    
+            }
+            div{
+                text-align: center;
+            }
+        </style>
+</html> 
