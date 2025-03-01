@@ -6,34 +6,34 @@
         </title>
         <script>
             function validateform(){
-                var firstname = document.getElementById("Username");
-                if(firstname.length < 6){
-                    alert("First name should be minimum 6 characters length.");
-                    return false;
+                var firstname = document.getElementById("UserName").value;
+                var namept = /^[a-zA-Z]$/;
+                if(firstname.length < 6 || !firstname.match(namept)){
+                    alert("First name should be minimum 6 characters length and should only contain alphabets.");
                 }
-                var lastname = document.getElementById("Last Name");
+                var lastname = document.getElementById("Last Name").value;
                 if(lastname.length < 10){
                     alert("Last name should be minimum 10 characters length.");
                     return false;
                 }
-                var password = document.getElementById("Password");
+                var password = document.getElementById("Password").value;
                 if(password.length < 6){
                     alert("Password should be minimum 6 characters length.");
                     return false;
                 }
-                var emailid = document.getElementById("Email id");
+                var emailid = document.getElementById("Email id").value;
                 var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
                 if(!email.match(emailPattern)){
                     alert("Please enter a valid email Id");
                     return false;
                 }
-                var mobileno = document.getElementById("Mobile Number");
+                var mobileno = document.getElementById("Mobile Number").value;
                 var mobilePattern = /^[0-9]{10}$/;
                 if(!mobileno.match(mobilePattern)){
                     alert("Please enter a valid mobile number");
                     return false;
                 }
-                var address = document.getElementById("Address");
+                var address = document.getElementById("Address").value;
                 if(address.trim()=""){
                     alert("Please Enter the Address");
                     return false;
