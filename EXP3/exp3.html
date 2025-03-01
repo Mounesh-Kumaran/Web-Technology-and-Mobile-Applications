@@ -8,8 +8,12 @@
             function validateform(){
                 var firstname = document.getElementById("UserName").value;
                 var namept = /^[a-zA-Z]$/;
-                if(firstname.length < 6 || !firstname.match(namept)){
-                    alert("First name should be minimum 6 characters length and should only contain alphabets.");
+                if(firstname.length < 6){
+                    alert("First name should be minimum 6 characters length.");
+                }
+                if (!firstname.match(namept)){
+                    alert("First name should not contain any alphabets or special characters.");
+                    return false;
                 }
                 var lastname = document.getElementById("Last Name").value;
                 if(lastname.length < 10){
