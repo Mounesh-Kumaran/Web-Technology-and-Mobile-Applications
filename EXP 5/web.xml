@@ -1,0 +1,10 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="3.0">
+  <servlet>
+    <servlet-name>GetPostServlet</servlet-name>
+    <servlet-class>GetPostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetPostServlet</servlet-name>
+    <url-pattern>/GetPostServlet</url-pattern>
+  </servlet-mapping>
+</web-app>
