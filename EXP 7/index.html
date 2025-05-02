@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Preferences using Cookies</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #ffafbd, #ffc3a0);
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      transition: background 0.5s ease-in-out;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      width: 320px;
+    }
+
+    h2 {
+      color: #ff6f61;
+    }
+
+    select, button {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ff6f61;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    button {
+      background: #ff6f61;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #e6514a;
+    }
+
+    .pref-box {
+      margin-top: 20px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.8);
+      color: black;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .dark-mode {
+      background: linear-gradient(to right, #333333, #1e1e1e);
+      color: white;
+    }
+
+    .dark-mode .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .dark-mode .pref-box {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Set Your Preferences</h2>
+
+    <div id="form-section">
+      <label for="theme">Choose Theme:</label>
+      <select id="theme">
+        <option value="light">Light</option>
+        <option value="dark">Dark</option>
+      </select>
+
+      <label for="language">Choose Language:</label>
+      <select id="language">
+        <option value="English">English</option>
+        <option value="French">French</option>
+      </select>
+
+      <button onclick="savePreferences()">Save Preferences</button>
+    </div>
+
+    <div id="view-section" class="hidden">
+      <h2>Your Preferences</h2>
+      <div class="pref-box">
+        <p>🌟 Theme: <span id="saved-theme">-</span></p>
+        <p>🌍 Language: <span id="saved-language">-</span></p>
+      </div>
+      <button onclick="resetPreferences()">Change Preferences</button>
+    </div>
+  </div>
+
+  <script>
+    function savePreferences() {
+      const theme = document.getElementById("theme").value;
+      const language = document.getElementById("language").value;
+
+      fetch("PreferenceServlet", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `theme=${theme}&language=${language}`
+      }).then(() => updateView());
+    }
+
+    function updateView() {
+      fetch("PreferenceServlet")
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("saved-theme").innerText = data.theme;
+          document.getElementById("saved-language").innerText = data.language;
+
+          document.body.classList.toggle("dark-mode", data.theme === "dark");
+          document.getElementById("form-section").classList.add("hidden");
+          document.getElementById("view-section").classList.remove("hidden");
+        });
+    }
+
+    function resetPreferences() {
+      fetch("PreferenceServlet", { method: "DELETE" })
+        .then(() => {
+          document.getElementById("form-section").classList.remove("hidden");
+          document.getElementById("view-section").classList.add("hidden");
+          document.body.classList.remove("dark-mode");
+        });
+    }
+
+    window.onload = updateView;
+  </script>
+</body>
+</html>
